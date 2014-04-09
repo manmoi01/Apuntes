@@ -1,0 +1,49 @@
+/* file custom.css for the theme CleanNotebook */
+div#notebook { /* centers the page content */
+padding-left:10%;
+padding-right:10%;
+/*background-color:#EEEEEE; */
+}
+ 
+div.cell { /* Tunes the space between cells */
+margin-top:1em;
+margin-bottom:1em;
+}
+ 
+div.text_cell_render h1 { /* Main titles bigger, centered */
+font-size: 2.2em;
+line-height:1.4em;
+text-align:center;
+}
+ 
+div.text_cell_render h2 { /*  Parts names nearer from text */
+font-size: 1.8em;
+margin-bottom: 0.4em;
+}
+ 
+
+div.text_cell_render img { /*  Parts names nearer from text */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+ 
+ 
+div.text_cell_render { /* Customize text cells */
+font-family: 'Times New Roman';
+font-size: 1.3em;
+line-height:1.3em;
+padding-left:3em;
+padding-right:3em;
+}
+ 
+#notebook li { /* More space between bullet points */
+margin-top:0.8em;
+}
+ 
+div.cell.code_cell {  /* Areat containing both code and output */
+background-color:#EEEEEE; /* light blue */
+border-radius: 10px; /* rounded borders = friendlier */
+padding: 1em;
+}
