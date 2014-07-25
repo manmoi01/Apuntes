@@ -1,0 +1,1243 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Instrumentacion}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+
+    \section{Introducción a la obtención de curvas}
+
+
+    \section{Introducción}\label{introducciuxf3n}
+
+El desarrollo de un instrumento de medición es un proceso que parte del
+hecho que podemos asociar una variable del enterno a una variable
+eléctrica (Voltaje, Corriente, Frecuencia, Fase). Sin embargo, en el
+proceso de medición siempre se introducen errores e incertidumbres, las
+cuales no necesariamente de pueden evitar. Esto hace necesario el
+proceso de calibración, el cual consiste en garantizar que el proceso de
+medición se ajuste a un patron de referencia.
+
+Por lo que el primer paso en el diseño de cualquier sistema de medición
+es caracterizar los sensores a utilizar, a través de un sistema de
+referencia que necesita estar certificado con algún patron de medición.
+
+\subsubsection{Curva base}\label{curva-base}
+
+La gran mayoria de fabricantes proporcionan una curva básica de ajuste
+para sus sensores de forma que si un sensor se dice lineal, entonces se
+espera que tenga la siguiente expresión:
+
+\begin{equation}
+y=ax+b
+\end{equation}
+
+Entonces basta concer los valores de $a$ y $b$ para poder conocer el
+valor de $y$ a partir del valor de $x$. Sin embargo, en la practica por
+errores de construcción o incertidumbres parametricas esto no sucede ya
+que la ecuación exacta no se conoce o resulta muy dificil conocer por lo
+que normalmente se utiliza la tecnica de \textbf{ajusta a una curva}
+para poder obtener una la expresión:
+
+\begin{equation}
+y=\hat{a}x+\hat{b}+\varepsilon
+\end{equation}
+
+donde $\hat{a}$ y $\hat{b}$ son obtenidos a través de una aproximación
+númerica, $\varepsilon$ es un error que no puede ser evitado y el cual
+solo se estima.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{scipy}
+         
+         \PY{o}{\PYZpc{}}\PY{k}{pylab} \PY{n}{inline}
+         
+         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k+kn}{import} \PY{n}{pylab}
+         
+         \PY{c}{\PYZsh{}Linear regression example}
+         \PY{c}{\PYZsh{} This is a very simple example of using two scipy tools }
+         \PY{c}{\PYZsh{} for linear regression, polyfit and stats.linregress}
+         
+         \PY{c}{\PYZsh{}Sample data creation}
+         \PY{c}{\PYZsh{}number of points }
+         \PY{n}{n}\PY{o}{=}\PY{l+m+mi}{50}
+         \PY{n}{t}\PY{o}{=}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+         \PY{c}{\PYZsh{}parameters}
+         \PY{n}{a}\PY{o}{=}\PY{l+m+mf}{0.8}\PY{p}{;} \PY{n}{b}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}
+         \PY{n}{fx}\PY{o}{=}\PY{n}{poly1d}
+         \PY{n}{x}\PY{o}{=}\PY{n}{polyval}\PY{p}{(}\PY{p}{[}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{]}\PY{p}{,}\PY{n}{t}\PY{p}{)}
+         \PY{c}{\PYZsh{}add some noise}
+         \PY{n}{xn}\PY{o}{=}\PY{n}{x}\PY{o}{+}\PY{n}{randn}\PY{p}{(}\PY{n}{n}\PY{p}{)}
+         \PY{c}{\PYZsh{}matplotlib ploting}
+         \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{font.size}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Variable Independiente}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Variable Dependiente}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{x}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xn}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r*}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{markersize}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{n}{t}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,}\PY{n}{t}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{x}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{,}\PY{n}{xn}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{]}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{g}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Populating the interactive namespace from numpy and matplotlib
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_2_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{\#\#Regresion Lineal}\label{regresion-lineal}
+
+En estadística la regresión lineal o ajuste lineal es un método
+matemático que modela la relación entre una variable dependiente $Y$,
+las variables independientes $X_i$ y un término aleatorio $\varepsilon$.
+Este modelo puede ser expresado como: \[
+Y_t = \beta_0  + \beta_1 X_1 + \beta_2 X_2 +  \cdots +\beta_p X_p + \varepsilon
+\]
+
+$Y_t$: variable dependiente, explicada o regresando.
+
+$X_1$, $X_2$, $\cdots, X_p$ : variables explicativas, independientes o
+regresores.
+
+$\beta_0$,$\beta_1$,$\beta_2$,$\cdots$ ,$\beta_p$ : parámetros, miden la
+influencia que las variables explicativas tienen sobre el regresando.
+
+donde $\beta_0$ es la intersección o término ``constante'', las
+$\beta_i \ (i > 0)$ son los parámetros respectivos a cada variable
+independiente, y $p$ es el número de parámetros independientes a tener
+en cuenta en la regresión. La regresión lineal puede ser contrastada con
+la regresión no lineal.
+
+\subsubsection{El modelo de regresión
+lineal}\label{el-modelo-de-regresiuxf3n-lineal}
+
+El modelo lineal relaciona la variable dependiente $Y$ con $K$ variables
+explicativas $X_k \ (k = 1,...K)$, o cualquier transformación de éstas,
+que generan un hiperplano de parámetros \beta\_k desconocidos:
+
+\begin{equation}
+ Y = \sum \beta_k X_k + \varepsilon
+\end{equation}
+
+donde \varepsilon  es la perturbación aleatoria que recoge todos
+aquellos factores de la realidad no controlables u observables y que por
+tanto se asocian con el azar, y es la que confiere al modelo su carácter
+estocástico. En el caso más sencillo, con una sola variable explicativa,
+el hiperplano es una recta:
+
+\begin{equation}
+Y = \beta_1 + \beta_2 X_2 + \varepsilon
+\end{equation}
+
+El problema de la regresión consiste en elegir unos valores determinados
+para los parámetros desconocidos $\beta_k$, de modo que la ecuación
+quede completamente especificada. Para ello se necesita un conjunto de
+observaciones. En una observación cualquiera i-ésima $(i= 1,... I)$ se
+registra el comportamiento simultáneo de la variable dependiente y las
+variables explicativas (las perturbaciones aleatorias se suponen no
+observables).
+
+\begin{equation}
+Y_i = \sum \beta_k X_{ki} + \varepsilon_i
+\end{equation}
+
+Los valores escogidos como estimadores de los parámetros,
+$\hat{\beta_k}$, son los coeficientes de regresión, sin que se pueda
+garantizar que coinciden con parámetros reales del proceso generador.
+Por tanto, en
+
+\begin{equation}
+Y_i = \sum \hat{\beta_k} X_{ki} + \hat{\varepsilon_i}
+\end{equation}
+
+Los valores \hat{\varepsilon_i} son por su parte estimaciones de la
+perturbación aleatoria o errores.
+
+\subsubsection{Hipótesis modelo de regresión lineal
+clásico}\label{hipuxf3tesis-modelo-de-regresiuxf3n-lineal-cluxe1sico}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Esperanza matemática nula. \[E(\varepsilon_i) = 0\] Para cada valor de
+  X la perturbación tomará distintos valores de forma aleatoria, pero no
+  tomará sistemáticamente valores positivos o negativos, sino que se
+  supone que tomará algunos valores mayores que cero y otros menores, de
+  tal forma que su valor esperado sea cero.
+\item
+  Homocedasticidad
+  \[Var(\varepsilon_t) = E(\varepsilon_t - E \varepsilon_t)^2 = E \varepsilon_t^2 = \sigma^2\]
+  para todo t. Todos los términos de la perturbación tienen la misma
+  varianza que es desconocida. La dispersión de cada \varepsilon\_t en
+  torno a su valor esperado es siempre la misma.
+\item
+  Incorrelación.
+  \[Cov(\varepsilon_t,\varepsilon_s ) = (\varepsilon_t - E \varepsilon_t) (\varepsilon_s - E \varepsilon_s) = E \varepsilon_t \varepsilon_s = 0 \]
+  para todo $t,s$ con $t$ distinto de $s$. Las covarianzas entre las
+  distintas pertubaciones son nulas, lo que quiere decir que no están
+  correlacionadas o autocorrelacionadas. Esto implica que el valor de la
+  perturbación para cualquier observación muestral no viene influenciado
+  por los valores de la perturbación correspondientes a otras
+  observaciones muestrales.
+\item
+  Regresores no estocásticos.
+\item
+  No existen relaciones lineales exactas entre los regresores.
+\item
+  $T > k + 1$ Suponemos que no existen errores de especificación en el
+  modelo ni errores de medida en las variables explicativas
+\item
+  Normalidad de las perturbaciones $\varepsilon -> N(0, \sigma^2 )$
+\end{enumerate}
+
+\subsubsection{Supuestos del modelo de regresión
+lineal}\label{supuestos-del-modelo-de-regresiuxf3n-lineal}
+
+Para poder crear un modelo de regresión lineal, es necesario que se
+cumpla con los siguientes supuestos:3
+
+\emph{La relación entre las variables es lineal. }Los errores en la
+medición de las variables explicativas son independientes entre sí.
+\emph{Los errores tienen varianza constante. (Homocedasticidad) }Los
+errores tienen una esperanza matemática igual a cero (los errores de una
+misma magnitud y distinto signo son equiprobables). *El error total es
+la suma de todos los errores.
+
+\subsubsection{Tipos de modelos de regresión
+lineal}\label{tipos-de-modelos-de-regresiuxf3n-lineal}
+
+Existen diferentes tipos de regresión lineal que se clasifican de
+acuerdo a sus parámetros:
+
+\paragraph{Regresión lineal simple}\label{regresiuxf3n-lineal-simple}
+
+Sólo se maneja una variable independiente, por lo que sólo cuenta con
+dos parámetros. Son de la forma:4
+
+\begin{equation}
+Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i
+\end{equation}
+
+donde $\varepsilon_i$ es el error asociado a la medición del valor $X_i$
+y siguen los supuestos de modo que $\varepsilon_i$ $\sim N(0,\sigma^2)$
+(media cero, varianza constante e igual a un $\sigma$ y
+$\varepsilon_i \perp \varepsilon_j$ con $i\neq j$).
+
+\subsubsection{Análisis}\label{anuxe1lisis}
+
+Dado el modelo de regresión simple, si se calcula la esperanza (valor
+esperado) del valor Y, se obtiene:5
+
+\begin{equation}
+E(y_i) = \hat{y_i}=E(\beta_0) + E(\beta_1 x_i) + E(\varepsilon_i)
+\end{equation}
+
+Derivando respecto a $\hat{\beta}_0$ y $\hat{\beta}_1$ e igualando a
+cero, se obtiene:
+
+\begin{equation}
+\frac{\partial \sum (y_i - \hat{y_i})^2 }{\partial \hat{\beta}_0} = 0 
+\end{equation}
+
+\begin{equation}
+\frac{\partial \sum (y_i - \hat{y_i})^2 }{\partial \hat{\beta}_1} = 0 
+\end{equation}
+
+Obteniendo dos ecuaciones denominadas ecuaciones normales que generan la
+siguiente solución para ambos parámetros:4
+
+\begin{equation}
+\hat{\beta_1} = \frac { \sum x \sum y - n \sum xy } { \left ( \sum x \right ) ^ 2 - n \sum x^2 } = \frac{ \sum (x-\bar{x})(y-\bar{y} ) }{\sum ( x - \bar{x})^2 }
+\end{equation}
+
+\begin{equation}
+\hat{\beta_0} = \frac { \sum y - \hat{\beta}_1 \sum x } { n } = \bar{y} - \hat{\beta_1} \bar{x}
+\end{equation}
+
+La interpretación del parámetro \{$\beta_1$\} es que un incremento en
+$Xi$ de una unidad, $Yi$ incrementará en \{$\beta_1$\}
+
+\subsubsection{Regresión lineal
+múltiple}\label{regresiuxf3n-lineal-muxfaltiple}
+
+La regresion lineal nos permite trabajar con una variable a nivel de
+intervalo o razón, así también se puede comprender la relación de dos o
+más variables y nos permitirá relacionar mediante ecuaciones, una
+variable en relación a otras variables llamándose Regresión múltiple.
+Constantemente en la práctica de la investigación estadística, se
+encuentran variables que de alguna manera están relacionados entre si,
+por lo que es posible que una de las variables puedan relacionarse
+matemáticamente en función de otra u otras variables.
+
+Maneja varias variables independientes. Cuenta con varios parámetros. Se
+expresan de la forma:6
+
+\begin{equation}
+Y_i = \beta_0 + \sum \beta_i X_{ip} + \varepsilon_i
+\end{equation}
+
+donde $\varepsilon_i$ es el error asociado a la medición $i$ del valor
+$X_{ip}$ y siguen los supuestos de modo que
+$\varepsilon_i \sim N(0,\sigma^2)$ (media cero, varianza constante e
+igual a un $\sigma$ y $\varepsilon_i \perp \varepsilon_j$ con
+$i\neq j$).
+
+\subsubsection{Rectas de regresión}\label{rectas-de-regresiuxf3n}
+
+Las rectas de regresión son las rectas que mejor se ajustan a la nube de
+puntos (o también llamado diagrama de dispersión) generada por una
+distribución binomial. Matemáticamente, son posibles dos rectas de
+máximo ajuste:7
+
+La recta de regresión de $Y$ sobre $X$:
+
+\begin{equation}
+y = \bar{y} + \frac{\sigma_{xy}}{\sigma_{x}^2}(x - \bar{x})
+\end{equation}
+
+La recta de regresión de $X$ sobre $Y$:
+
+\begin{equation}
+x = \bar{x} + \frac{\sigma_{xy}}{\sigma_{y}^2}(y - \bar{y})
+\end{equation}
+
+La correlación (``$r$'') de las rectas determinará la calidad del
+ajuste. Si $r$ es cercano o igual a 1, el ajuste será bueno y las
+predicciones realizadas a partir del modelo obtenido serán muy fiables
+(el modelo obtenido resulta verdaderamente representativo); si $r$ es
+cercano o igual a 0, se tratará de un ajuste malo en el que las
+predicciones que se realicen a partir del modelo obtenido no serán
+fiables (el modelo obtenido no resulta representativo de la realidad).
+Ambas rectas de regresión se intersecan en un punto llamado centro de
+gravedad de la distribución.
+
+
+    \subsection{Ajuste de curvas}
+
+
+    El ajuste de curvas consiste en encontrar una curva que contenga una
+serie de puntos y que posiblemente cumpla una serie de restricciones
+adicionales. Esta sección es una introducción tanto a la interpolación
+(cuando se espera un ajuste exacto a determinadas restricciones) y al
+ajuste de curvas/análisis de regresión (cuando se permite una
+aproximación).
+
+    Ajuste de líneas y curvas polinómicas a puntos{[}editar · editar
+fuente{]}
+
+Empecemos con una ecuación polinómica de primer grado:
+
+\[
+y = ax + b\;
+\]
+
+Esta línea tiene pendiente a. Sabemos que habrá una línea conectando dos
+puntos cualesquiera. Por tanto, una ecuación polinómica de primer grado
+es un ajuste perfecto entre dos puntos.
+
+Si aumentamos el orden de la ecuación a la de un polinomio de segundo
+grado, obtenemos:
+
+\[
+y = ax^2 + bx + c\;
+\]
+
+Esto se ajustará exactamente a tres puntos. Si aumentamos el orden de la
+ecuación a la de un polinomio de tercer grado, obtenemos:
+
+\[
+y = ax^3 + bx^2 + cx + d\;
+\]
+
+que se ajustará a cuatro puntos.
+
+Una forma más general de decirlo es que se ajustará exactamente a cuatro
+restricciones. Cada restricción puede ser un punto, un ángulo o una
+curvatura (que es el recíproco del radio, o $1/R$). Las restricciones de
+ángulo y curvatura se suelen añadir a los extremos de una curva, y en
+tales casos se les llama condiciones finales. A menudo se usan
+condiciones finales idénticas para asegurar una transición suave entre
+curvas polinómicas contenidas en una única spline. También se pueden
+añadir restricciones de orden alto, como ``el cambio en la tasa de
+curvatura''. Esto, por ejemplo, sería útil en diseños de intercambios en
+trébol para incorporaciones a autopistas, para entender las fuerzas a
+las que somete a un vehículo y poder establecer límites razonables de
+velocidad.
+
+Si tenemos más de $n + 1$ restricciones (siendo $n$ el grado del
+polinomio), aún podemos hacer pasar la curva polinómica por ellas. No es
+seguro que vaya a existir un ajuste exacto a todas ellas (pero podría
+suceder, por ejemplo, en el caso de un polinomio de primer grado que se
+ajusta a tres puntos colineales). En general, sin embargo, se necesita
+algún método para evaluar cada aproximación. El método de mínimos
+cuadrados es una manera de comparar las desviaciones.
+
+Ahora bien, podríamos preguntarnos la razón de querer un ajuste
+aproximado cuando podríamos simplemente aumentar el grado de la ecuación
+polinómica para obtener un ajuste exacto. Existen varias:
+
+Incluso si existe un ajuste exacto, no quiere decir necesariamente que
+podamos encontrarlo. Dependiendo del algoritmo que se use, podríamos
+encontrar un caso divergente, donde no se podría calcular el ajuste
+exacto, o el coste computacional de encontrar la solución podría ser muy
+alto. De cualquier modo, tendríamos que acabar aceptando una solución
+aproximada.Quizá prefiramos el efecto de promediar datos cuestionables
+en una muestra, en lugar de distorsionar la curva para que se ajuste a
+ellos de forma exacta.
+
+Los polinomios de orden superior pueden oscilar mucho. Si hacemos pasar
+una curva por los puntos $A$ y $B$, esperaríamos que la curva pase
+también cerca del punto medio entre $A$ y $B$. Esto puede no suceder con
+curvas polinómicas de grados altos, ya que pueden tener valores de
+magnitud positiva o negativa muy grande. Con polinomios de grado bajo
+existen más posibilidades de que la curva pase cerca del punto medio (y
+queda garantizado que pasará exactamente por ahí, en los de primer
+grado). Los polinomios de orden bajo tienden a ser suaves y las curvas
+de los polinomios de orden alto tienden a ser ``bulbosas''. Para definir
+esto con más precisión, el número máximo de puntos de inflexión de una
+curva polinómica es $n-2$, donde $n$ es el orden de la ecuación
+polinómica. Un punto de inflexión es el lugar de una curva donde cambia
+de radio positivo a negativo. Obsérvese que la ``bulbosidad'' de los
+polinomios de orden alto es sólo una posibilidad, ya que también pueden
+ser suaves, pero no existen garantías, al contrario que sucede con los
+polinomios de orden bajo. Un polinomio de grado quince podría tener,
+como máximo, trece puntos de inflexión, pero podría tener también doce,
+once, o cualquier número hasta cero.
+
+Ahora que hemos hablado del uso de grados demasiado bajos para conseguir
+un ajuste exacto, comentemos qué sucede si el grado de una curva
+polinómica es mayor del necesario para dicho ajuste. Esto es malo por
+las razones comentadas anteriormente si los polinomios son de orden
+alto, pero también nos lleva a un caso en que exista un número infinito
+de soluciones. Por ejemplo, un polinomio de primer grado (una línea)
+restringido por un único punto, en lugar de los dos habituales, nos dará
+un número infinito de soluciones. Esto nos trae el problema de cómo
+comparar y escoger una solución única, lo que puede ser un problema
+tanto para humanos como para el software. Por esta razón es mejor
+escoger el polinomio de menor grado posible para obtener un ajuste
+exacto en todas las restricciones, y quizá incluso un grado menor si es
+aceptable una aproximación al ajuste.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}75}]:} \PY{k+kn}{from} \PY{n+nn}{scipy} \PY{k+kn}{import} \PY{n}{stats}
+         \PY{c}{\PYZsh{}Linear regressison \PYZhy{}polyfit \PYZhy{} polyfit can be used other orders polys}
+         \PY{p}{(}\PY{n}{ar}\PY{p}{,}\PY{n}{br}\PY{p}{)}\PY{o}{=}\PY{n}{polyfit}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xn}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{xr}\PY{o}{=}\PY{n}{polyval}\PY{p}{(}\PY{p}{[}\PY{n}{ar}\PY{p}{,}\PY{n}{br}\PY{p}{]}\PY{p}{,}\PY{n}{t}\PY{p}{)}
+         \PY{c}{\PYZsh{}compute the mean square error}
+         \PY{n}{err}\PY{o}{=}\PY{n}{sqrt}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{p}{(}\PY{n}{xr}\PY{o}{\PYZhy{}}\PY{n}{xn}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{/}\PY{n}{n}\PY{p}{)}
+         
+         \PY{c}{\PYZsh{}Linear \PYZsh{}2}
+         \PY{n}{A} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{vstack}\PY{p}{(}\PY{p}{[}\PY{n}{t}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+         \PY{n}{m}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{lstsq}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{xn}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{k}{print}\PY{p}{(}\PY{n}{m}\PY{p}{,}\PY{n}{c}\PY{p}{)}
+         \PY{n}{xr2}\PY{o}{=}\PY{n}{m}\PY{o}{*}\PY{n}{t}\PY{o}{+}\PY{n}{c}
+         
+         \PY{c}{\PYZsh{}Linear \PYZsh{}3}
+         \PY{n}{slope}\PY{p}{,} \PY{n}{intercept}\PY{p}{,} \PY{n}{r\PYZus{}value}\PY{p}{,} \PY{n}{p\PYZus{}value}\PY{p}{,} \PY{n}{std\PYZus{}err} \PY{o}{=} \PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xn}\PY{p}{)}
+         \PY{n}{xr3}\PY{o}{=}\PY{n}{intercept} \PY{o}{+} \PY{n}{slope}\PY{o}{*}\PY{n}{t}
+         
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Linear regression using polyfit}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{parameters: a=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ b=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ }\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{regression: a=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ b=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{, ms error= }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{ar}\PY{p}{,}\PY{n}{br}\PY{p}{,}\PY{n}{err}\PY{p}{)}\PY{p}{)}
+         
+         \PY{c}{\PYZsh{}matplotlib ploting}
+         \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{font.size}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Linear Regression Example}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{x}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{g.\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xn}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{k.}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xr}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xr2}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xr3}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{yx}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{original}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{plus noise}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{regression}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{regression2}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{regression3}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{show}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c}{\PYZsh{}Linear regression using stats.linregress}
+         \PY{p}{(}\PY{n}{a\PYZus{}s}\PY{p}{,}\PY{n}{b\PYZus{}s}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{tt}\PY{p}{,}\PY{n}{stderr}\PY{p}{)}\PY{o}{=}\PY{n}{stats}\PY{o}{.}\PY{n}{linregress}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xn}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Linear regression using stats.linregress}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{parameters: a=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ b=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ }\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{regression: a=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ b=}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{, std error= }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{a\PYZus{}s}\PY{p}{,}\PY{n}{b\PYZus{}s}\PY{p}{,}\PY{n}{stderr}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0.873819998785 -4.0359601305
+Linear regression using polyfit
+parameters: a=0.80 b=-4.00 
+regression: a=0.87 b=-4.04, ms error= 0.945
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_7_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Linear regression using stats.linregress
+parameters: a=0.80 b=-4.00 
+regression: a=0.87 b=-4.04, std error= 0.046
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{c}{\PYZsh{}matplotlib ploting}
+         \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{font.size}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Linear Regression Example}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{x}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{g.\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xn}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{k.}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xr}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xr2}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{xr3}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{yx}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{legend}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{original}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{plus noise}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{regression}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{regression2}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{regression3}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{xlim}\PY{p}{(}\PY{n}{xmin}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mf}{5.1}\PY{p}{,} \PY{n}{xmax}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{ylim}\PY{p}{(}\PY{n}{ymin}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mi}{8}\PY{p}{,} \PY{n}{ymax}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mi}{6}\PY{p}{)}
+         \PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_8_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Sistema de Medición por divisor de
+voltaje}\label{sistema-de-mediciuxf3n-por-divisor-de-voltaje}
+
+Este es un ejemplo de como utilizar un simple divisor como sistema para
+medir la luz, se tiene qun divisor de voltaje tal que el voltaje de
+salida es
+
+\begin{equation}
+V_{o} = \frac{R_{2}}{R_{1}+R_{2}}V_{i}
+\end{equation}
+
+Si consideramos que $R_{2}$ es un resistencia que varia con respecto a
+la intencidad de luz ($L$) (0\% a 100\%), de forma tal que:
+
+\begin{equation}
+R_{2}=kR_{b}
+\end{equation}
+
+donde $k$ es una ganancia y $R_{b}$ es la resistencia base. Entonces es
+posible realiconar el voltaje de salida $V_{o}$ con la intencidad de luz
+$L$. Qeudando el voltaje de salida como:
+
+\begin{equation}
+V_{o} = \frac{R_{b}k}{R_{1}+R_{b}k}V_{i}
+\end{equation}
+
+    \section{Uso de algebra
+computacional}\label{uso-de-algebra-computacional}
+
+Para facilitar las operaciones algebraicas en la actualidad existen
+herramientas para simplificar los calculos algebraicos, tal como sympy
+una libreria de python que permite el Computo de Algebre Simbolica
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}92}]:} \PY{k+kn}{import} \PY{n+nn}{sympy}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}93}]:} \PY{n}{R2}\PY{p}{,} \PY{n}{R1}\PY{p}{,} \PY{n}{Vi}\PY{p}{,} \PY{n}{Vo} \PY{o}{=} \PY{n}{sympy}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{R2 R1 Vi Vo}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{Vo}\PY{o}{=}\PY{p}{(}\PY{p}{(}\PY{n}{R2}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{R2}\PY{o}{+}\PY{n}{R1}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{Vi}
+         \PY{k}{print}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+R2*Vi/(R1 + R2)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}94}]:} \PY{n}{k}\PY{p}{,} \PY{n}{Rb}\PY{p}{,} \PY{n}{R1}\PY{p}{,} \PY{n}{Vi}\PY{p}{,} \PY{n}{Vo} \PY{o}{=} \PY{n}{sympy}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{k Rb R1 Vi Vo}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{R2}\PY{o}{=}\PY{n}{k}\PY{o}{*}\PY{n}{Rb}
+         \PY{n}{Vo}\PY{o}{=}\PY{p}{(}\PY{n}{R2}\PY{o}{*}\PY{n}{Vi}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{R2}\PY{o}{+}\PY{n}{R1}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Rb*Vi*k/(R1 + Rb*k)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}95}]:} \PY{n}{sympy}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}95}]:} Rb*Vi*k/(R1 + Rb*k)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}96}]:} \PY{n}{sympy}\PY{o}{.}\PY{n}{factor}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}96}]:} Rb*Vi*k/(R1 + Rb*k)
+\end{Verbatim}
+        
+    Es importante señalar que la simplificación computacional no siempre
+brinda los resultados optimos, por lo que es necesario tener cuidado con
+su uso, en este caso un expresión más simple podría ser:
+
+\begin{equation}
+V_{o} = \frac{R_{b}}{\frac{R_{1}}{k}+R_{b}}V_{i}
+\end{equation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}97}]:} \PY{n}{sympy}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{(}\PY{n}{Vi}\PY{o}{*}\PY{n}{Rb}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{p}{(}\PY{n}{R1}\PY{o}{/}\PY{n}{k}\PY{p}{)}\PY{o}{+}\PY{n}{Rb}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}97}]:} Rb*Vi*k/(R1 + Rb*k)
+\end{Verbatim}
+        
+
+    \subsection{Cálculo Númerico}
+
+
+    Realizando un cálculo númerico suponiendo que: $R_{1}=2.5k\Omega$,
+$V_{i}=10$ y que $R_{2}$ tiene un valor entre $(1k\Omega)$ a
+$(5k\Omega)$ que corresponden a $L$ entre $0\%$ y $100\%$
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}98}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}99}]:} \PY{n}{R2}\PY{o}{=}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{5000}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
+         \PY{n}{R1}\PY{o}{=}\PY{l+m+mi}{2500}
+         \PY{n}{Vi}\PY{o}{=}\PY{l+m+mi}{10}
+         \PY{n}{L}\PY{o}{=}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}100}]:} \PY{n}{Vo}\PY{o}{=}\PY{p}{(}\PY{n}{R2}\PY{o}{*}\PY{n}{Vi}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{R1}\PY{o}{+}\PY{n}{R2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}101}]:} \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{font.size}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{\PYZcb{}}\PY{p}{)}
+          \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{R2}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Vo}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{xlim}\PY{p}{(}\PY{n}{xmin}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{xmax}\PY{o}{=}\PY{l+m+mi}{5000}\PY{p}{)}
+          \PY{n}{ylim}\PY{p}{(}\PY{n}{ymin}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{ymax}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{R2}\PY{p}{,}\PY{n}{Vo}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_23_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}102}]:} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Vo}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{xlim}\PY{p}{(}\PY{n}{xmin}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{xmax}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+          \PY{n}{ylim}\PY{p}{(}\PY{n}{ymin}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{ymax}\PY{o}{=}\PY{l+m+mi}{105}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{L}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{grid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}103}]:} \PY{n}{s}\PY{o}{=}\PY{n}{Vo}\PY{o}{.}\PY{n}{size}
+          \PY{k}{print}\PY{p}{(}\PY{n}{s}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{)}
+          \PY{n}{ini}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}
+          \PY{n}{fin}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}
+          \PY{n}{Vop}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{[}\PY{n}{s}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{)}
+          \PY{n}{Lp}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{[}\PY{n}{s}\PY{o}{/}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{)}
+          \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{0}
+          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n+nb}{int}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{p}{,}\PY{n+nb}{int}\PY{p}{(}\PY{n}{s}\PY{o}{/}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+              \PY{n}{Vop}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{o}{=}\PY{n}{Vo}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+              \PY{n}{Lp}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{o}{=}\PY{n}{L}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+              \PY{n}{k} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10.0
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}104}]:} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{z}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Vop}\PY{p}{,} \PY{n}{Lp}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+          \PY{n}{p} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+          \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Vo}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{xlim}\PY{p}{(}\PY{n}{xmin}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{xmax}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+          \PY{n}{ylim}\PY{p}{(}\PY{n}{ymin}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{ymax}\PY{o}{=}\PY{l+m+mi}{105}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vop}\PY{p}{,}\PY{n}{Lp}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{.}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{markersize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{L}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Red}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{p}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{grid}\PY{p}{(}\PY{p}{)}
+          \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Error}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{L}\PY{p}{,}\PY{p}{(}\PY{n}{p}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{L}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ 2.32428664 -1.83149147  2.27442022]
+       2
+2.324 x - 1.831 x + 2.274
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}104}]:} [<matplotlib.lines.Line2D at 0x110c1ac50>]
+\end{Verbatim}
+        
+    
+    \begin{verbatim}
+<matplotlib.figure.Figure at 0x110e65d10>
+    \end{verbatim}
+
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_26_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_26_4.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}80}]:} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{z}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Vop}\PY{p}{,} \PY{n}{Lp}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+         \PY{n}{p} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Vo}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{xlim}\PY{p}{(}\PY{n}{xmin}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{xmax}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+         \PY{n}{ylim}\PY{p}{(}\PY{n}{ymin}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{ymax}\PY{o}{=}\PY{l+m+mi}{105}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Vop}\PY{p}{,}\PY{n}{Lp}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{.}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{markersize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{L}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Red}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{p}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{grid}\PY{p}{(}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Error}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{L}\PY{p}{,}\PY{p}{(}\PY{n}{p}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{L}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    NameError                                 Traceback (most recent call last)
+
+        <ipython-input-80-3287b09e098d> in <module>()
+          1 figure(figsize=(14,10), dpi=150)
+    ----> 2 z=np.polyfit(Vop, Lp, 3)
+          3 print(z)
+          4 p = np.poly1d(z)
+          5 print(p)
+
+
+        NameError: name 'Vop' is not defined
+
+    \end{Verbatim}
+
+    
+    \begin{verbatim}
+<matplotlib.figure.Figure at 0x10e66a9d0>
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}105}]:} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{z}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Vop}\PY{p}{,} \PY{n}{Lp}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+          \PY{n}{p} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{n}{p}\PY{p}{)}
+          \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Vo}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{xlim}\PY{p}{(}\PY{n}{xmin}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{xmax}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+          \PY{n}{ylim}\PY{p}{(}\PY{n}{ymin}\PY{o}{=}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{ymax}\PY{o}{=}\PY{l+m+mi}{105}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vop}\PY{p}{,}\PY{n}{Lp}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{.}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{markersize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{L}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Red}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{Vo}\PY{p}{,}\PY{n}{p}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{grid}\PY{p}{(}\PY{p}{)}
+          \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{L}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Error}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+          \PY{n}{plot}\PY{p}{(}\PY{n}{L}\PY{p}{,}\PY{p}{(}\PY{n}{p}\PY{p}{(}\PY{n}{Vo}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{L}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{2.5}\PY{p}{,} \PY{n}{linestyle}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ 0.06635417 -0.54567593  2.5853706   2.45149595 -1.28208164]
+         4          3         2
+0.06635 x - 0.5457 x + 2.585 x + 2.451 x - 1.282
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}105}]:} [<matplotlib.lines.Line2D at 0x110be4890>]
+\end{Verbatim}
+        
+    
+    \begin{verbatim}
+<matplotlib.figure.Figure at 0x10f70e850>
+    \end{verbatim}
+
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_28_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_28_4.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Ejemplo potenciometro}\label{ejemplo-potenciometro}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}82}]:} \PY{n}{Voltaje}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{3.3}\PY{p}{,} \PY{l+m+mf}{3.09}\PY{p}{,} \PY{l+m+mf}{2.8}\PY{p}{,} \PY{l+m+mf}{2.6}\PY{p}{,} \PY{l+m+mf}{2.2}\PY{p}{,} \PY{l+m+mf}{2.1}\PY{p}{,} \PY{l+m+mf}{1.9}\PY{p}{,} \PY{l+m+mf}{1.7}\PY{p}{,} \PY{l+m+mf}{1.4}\PY{p}{,} \PY{l+m+mf}{1.1}\PY{p}{,} \PY{l+m+mf}{0.8}\PY{p}{]}\PY{p}{)}
+         \PY{n}{altura}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{17}\PY{p}{,} \PY{l+m+mi}{28}\PY{p}{,} \PY{l+m+mi}{34}\PY{p}{,} \PY{l+m+mi}{44}\PY{p}{,} \PY{l+m+mi}{59}\PY{p}{,} \PY{l+m+mf}{66.5}\PY{p}{,} \PY{l+m+mi}{68}\PY{p}{,} \PY{l+m+mi}{69}\PY{p}{]}\PY{p}{)}
+         \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{font.size}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{\PYZcb{}}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}82}]:} [<matplotlib.lines.Line2D at 0x10e06ecd0>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_30_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{n}{ze}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,} \PY{n}{altura}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{n}{pe} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pe}\PY{p}{)}
+         \PY{n}{altura\PYZus{}estimada}\PY{o}{=}\PY{n}{pe}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura\PYZus{}estimada}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ -2.65540636 -22.01906455  94.88167602]
+        2
+-2.655 x - 22.02 x + 94.88
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}83}]:} [<matplotlib.lines.Line2D at 0x10e0a3610>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_31_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}84}]:} \PY{n}{error}\PY{o}{=}\PY{n}{altura}\PY{o}{\PYZhy{}}\PY{n}{altura\PYZus{}estimada}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{altura}\PY{p}{,}\PY{n}{error}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}84}]:} [<matplotlib.lines.Line2D at 0x10e88e990>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_32_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}85}]:} \PY{n}{ze}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,} \PY{n}{altura}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{n}{pe} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pe}\PY{p}{)}
+         \PY{n}{altura\PYZus{}estimada}\PY{o}{=}\PY{n}{pe}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura\PYZus{}estimada}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[  13.57611741  -86.04987557  133.2932766     9.89111133]
+       3         2
+13.58 x - 86.05 x + 133.3 x + 9.891
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}85}]:} [<matplotlib.lines.Line2D at 0x10e614b10>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_33_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}86}]:} \PY{n}{error}\PY{o}{=}\PY{n}{altura}\PY{o}{\PYZhy{}}\PY{n}{altura\PYZus{}estimada}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{altura}\PY{p}{,}\PY{n}{error}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}86}]:} [<matplotlib.lines.Line2D at 0x10ed3c650>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_34_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}87}]:} \PY{n}{ze}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,} \PY{n}{altura}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{n}{pe} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pe}\PY{p}{)}
+         \PY{n}{altura\PYZus{}estimada}\PY{o}{=}\PY{n}{pe}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura\PYZus{}estimada}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ -7.87249688e+02   1.64674345e+04  -1.52523166e+05   8.22981272e+05
+  -2.86192907e+06   6.69448393e+06  -1.06534967e+07   1.13722328e+07
+  -7.77994794e+06   3.07437538e+06  -5.31714758e+05]
+        10             9             8            7             6
+-787.2 x  + 1.647e+04 x - 1.525e+05 x + 8.23e+05 x - 2.862e+06 x
+              5             4             3            2
+ + 6.694e+06 x - 1.065e+07 x + 1.137e+07 x - 7.78e+06 x + 3.074e+06 x - 5.317e+05
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}87}]:} [<matplotlib.lines.Line2D at 0x10ed47090>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_35_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}88}]:} \PY{n}{error}\PY{o}{=}\PY{n}{altura}\PY{o}{\PYZhy{}}\PY{n}{altura\PYZus{}estimada}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{altura}\PY{p}{,}\PY{n}{error}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}88}]:} [<matplotlib.lines.Line2D at 0x10f1f5490>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_36_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}89}]:} \PY{n}{ze}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,} \PY{n}{altura}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{n}{pe} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pe}\PY{p}{)}
+         \PY{n}{altura\PYZus{}estimada}\PY{o}{=}\PY{n}{pe}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura\PYZus{}estimada}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[  -6.78124742   67.73220797 -243.30308654  372.80998877 -249.88809617
+  128.90728071]
+        5         4         3         2
+-6.781 x + 67.73 x - 243.3 x + 372.8 x - 249.9 x + 128.9
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}89}]:} [<matplotlib.lines.Line2D at 0x10f1ff890>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_37_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}90}]:} \PY{n}{error}\PY{o}{=}\PY{n}{altura}\PY{o}{\PYZhy{}}\PY{n}{altura\PYZus{}estimada}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{altura}\PY{p}{,}\PY{n}{error}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}90}]:} [<matplotlib.lines.Line2D at 0x10f6df250>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_38_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}91}]:} \PY{n}{ze}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{polyfit}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,} \PY{n}{altura}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{k}{print}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{n}{pe} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{poly1d}\PY{p}{(}\PY{n}{ze}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pe}\PY{p}{)}
+         \PY{n}{altura\PYZus{}estimada}\PY{o}{=}\PY{n}{pe}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{)}
+         \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{dpi}\PY{o}{=}\PY{l+m+mi}{150}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r.\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Voltaje}\PY{p}{,}\PY{n}{altura\PYZus{}estimada}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ -7.87249688e+02   1.64674345e+04  -1.52523166e+05   8.22981272e+05
+  -2.86192907e+06   6.69448393e+06  -1.06534967e+07   1.13722328e+07
+  -7.77994794e+06   3.07437538e+06  -5.31714758e+05]
+        10             9             8            7             6
+-787.2 x  + 1.647e+04 x - 1.525e+05 x + 8.23e+05 x - 2.862e+06 x
+              5             4             3            2
+ + 6.694e+06 x - 1.065e+07 x + 1.137e+07 x - 7.78e+06 x + 3.074e+06 x - 5.317e+05
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}91}]:} [<matplotlib.lines.Line2D at 0x10f4c5290>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Instrumentacion_files/Instrumentacion_39_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

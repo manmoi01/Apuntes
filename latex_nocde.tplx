@@ -1,0 +1,7 @@
+((= This line selects the cell style. =))
+((* set cell_style = 'style_bw_python.tplx' *))
+
+((*- extends 'article.tplx' -*))
+% Disable input cells
+((* block input_group *))
+((* endblock input_group *))
